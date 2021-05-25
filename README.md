@@ -1,2 +1,2 @@
 # mqtt
-This project is a simulation of a small smart home. This includes some mqtt-clients and a data logger.
+This project is a simulation of a small data logger for an mosquitto-mqtt-broker written in C#.
