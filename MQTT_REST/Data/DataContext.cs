@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MQTT_DataLogger_RestAPI
+namespace MQTT_REST
 {
-    public class DataLoggerContext : DbContext
+    public class DataContext : DbContext
     {
         public DbSet<Message> Messages { get; set; }
 
-        public DataLoggerContext(DbContextOptions<DataLoggerContext> options) : base(options) { }
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
     }
 }

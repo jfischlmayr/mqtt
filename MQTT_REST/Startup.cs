@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MQTT_DataLogger_RestAPI
+namespace MQTT_REST
 {
     public class Startup
     {
@@ -28,12 +28,12 @@ namespace MQTT_DataLogger_RestAPI
         public void ConfigureServices(IServiceCollection services)
         {
             string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContextPool<DataLoggerContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
+            services.AddDbContextPool<DataContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MQTT_DataLogger_RestAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MQTT_REST", Version = "v1" });
             });
         }
 
@@ -44,7 +44,7 @@ namespace MQTT_DataLogger_RestAPI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MQTT_DataLogger_RestAPI v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MQTT_REST v1"));
             }
 
             app.UseHttpsRedirection();
